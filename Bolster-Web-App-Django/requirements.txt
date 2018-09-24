@@ -32,8 +32,6 @@ protobuf==3.6.1
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
 pycparser==2.19
-pycrypto==2.6.1
-pycryptodome==3.4.3
 pygobject==3.26.1
 pyOpenSSL==18.0.0
 Pyrebase==3.0.27
