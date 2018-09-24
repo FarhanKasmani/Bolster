@@ -1,0 +1,236 @@
+{% extends 'dashboard.html' %}
+{% block head %}
+      <title>profile</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+      <link rel="stylesheet" href="../static/css/Profile-Edit-Form.css">
+      <link rel="stylesheet" href="../static/css/Profile-Edit-Form1.css">
+{% endblock %}
+
+{% block content %}
+    <body style="background-color:rgb(255,255,255);">
+        <div class="container profile profile-view" id="profile">
+            <form class="" action="/login" method="post">
+              {% csrf_token %}
+                <div class="form-row profile-row">
+                    <div class="col-md-4 relative" style="background-color:#f1f1f1;">
+                        <div class="avatar"></div>
+                        <div class="avatar-bg center" style="margin:120px 0px 0px 47px;"></div>
+                    </div>
+
+                    <div class="col-md-8" style="background-color:#e0e4e8;font-size:19px;">
+                        <h1 class="text-center" style="font-family:Aldrich, sans-serif;">PROFILE</h1>
+                        <div class="form-row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Name</label><input class="form-control-plaintext" type="text" value={{ form.Name }} readonly="" style="background-color:#ffffff;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Blood Group</label><input class="form-control-plaintext" type="text" value={{ form.Blood }} readonly="" style="background-color:#ffffff;"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Gender</label><input class="form-control-plaintext" type="text" value={{ form.Gender }} readonly="" style="background-color:#ffffff;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Contact</label><input class="form-control-plaintext" type="text" value={{ form.Phone }} readonly="" style="background-color:#ffffff;"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Age</label><input class="form-control-plaintext" type="text" value={{ form.Age }} readonly="" style="background-color:#ffffff;"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group"><label>Status</label><label class="form-control-plaintext" style="background-color:#ffffff;">{% if form.Active %} {{ 'Not Verified' }} {% else %} {{ 'Verified' }} {% endif %}</label></div>
+                                <!--<input class="form-control-plaintext" type="text" value={{ form.Active }} readonly="" style="background-color:#ffffff;">-->
+                            </div>
+                        </div>
+              </form>
+              <form class="" action="/verification/" method="get">
+                <!--{% if form.Active %}-->
+                  <div class="form-row">
+                      <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit">Verify</button></div>
+                  </div>
+                <!--{% endif %}-->
+              </form>
+            </div>
+            </div>
+          </div>
+        <h1 class="text-center float-none" style="font-family:Aldrich, sans-serif;">Past Medical Records</h1><div class="container">
+<div class="container">
+
+
+<!--
+  {% for obj in images %}
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+      <img src={{ obj }} style="width:70%" align="middle">
+  </div>
+  {% endfor %}
+
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+-->
+  <div class="row">
+    {% for obj in images %}
+    <!--<div class="column">
+      <img class="demo cursor" src={{ obj }} style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+  -->
+    <div class="gallery">
+      <a target="_blank" href={{ obj }}>
+      <img src={{ obj }} alt="Fjords" width="500" height="400">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+<!--
+<style media="screen">
+* {
+box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+cursor: pointer;
+position: absolute;
+top: 40%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 20px;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+text-align: center;
+background-color: #222;
+padding: 2px 16px;
+color: white;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Six columns side by side */
+.column {
+float: left;
+width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+opacity: 1;
+}
+</style>
+<script type="text/javascript">
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+var i;
+var slides = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("demo");
+if (n > slides.length) {slideIndex = 1}
+if (n < 1) {slideIndex = slides.length}
+for (i = 0; i < slides.length; i++) {
+  slides[i].style.display = "none";
+}
+for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" active", "");
+}
+slides[slideIndex-1].style.display = "block";
+dots[slideIndex-1].className += " active";
+}
+</script>
+-->
+    </script>
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../static/js/Profile-Edit-Form.js"></script>
+    </body>
+{% endblock %}

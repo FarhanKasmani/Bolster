@@ -1,0 +1,14 @@
+.beautiful.alert {
+  border-width:1px;
+  background-image:none;
+  border-color:transparent;
+  border-radius:0px;
+  box-shadow:none;
+}
+
+.alert.alert-warning.beautiful {
+  background-color:#f9e491;
+  /*border-color:#f9e491;*/
+  color:#c29d0b;
+}
+

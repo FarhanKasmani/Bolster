@@ -1,0 +1,23 @@
+{% extends 'home_page.html' %}
+
+{% block head %}
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../static/css/Registration-Form-with-Photo.css">
+{% endblock %}
+
+{% block content %}
+    <div class="register-photo">
+        <div class="form-container" style="width:332px;height:419px;">
+            <form method="post" style="padding:22px;padding-top:59px;padding-bottom:67px;">
+                {% csrf_token %}
+                <h2 class="text-center"><strong>Sign in</strong></h2>
+                <div class="form-group">{{ form.email }}<!--input class="form-control" type="text" name="username" placeholder="Username">-->
+                    {% if form.email.errors %}<p style="font-size:12px;color:rgb(255,0,0);padding:3px;">{% for error in form.email.errors%}{{ error }}{% endfor %}</p>{% endif %}
+                </div>
+                <div class="form-group">{{ form.password }}<!--<input class="form-control" type="password" name="password" placeholder="Password">-->
+                    {% if form.password.errors %}<p style="font-size:12px;color:rgb(255,0,0);padding:3px;">{% for error in form.password.errors%}{{ error }}{% endfor %}</p>{% endif %}
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(81,80,86);">Login</button></div><a href="/signup" class="already">Dont have an account ?</a></form>
+        </div>
+    </div>
+{% endblock %}
