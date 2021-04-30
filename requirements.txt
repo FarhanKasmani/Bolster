@@ -40,7 +40,7 @@ pytz==2018.5
 pyxdg==0.25
 requests==2.19.1
 requests-toolbelt==0.7.0
-rsa==4.0
+rsa==4.7
 SecretStorage==2.3.1
 six==1.11.0
 stripe==2.8.1
