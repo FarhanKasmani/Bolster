@@ -45,4 +45,4 @@ SecretStorage==2.3.1
 six==1.11.0
 stripe==2.8.1
 unity-lens-photos==1.0
-urllib3==1.23
+urllib3==1.26.5
